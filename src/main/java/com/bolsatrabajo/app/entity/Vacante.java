@@ -26,46 +26,43 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name="aspirante")
-public class Aspirante implements Serializable {
-
-	private static final long serialVersionUID = -2597526960120597113L;
-
+@Table(name="vacante")
+public class Vacante implements Serializable{
+	
+	private static final long serialVersionUID = 3410523599561209245L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
 	
-	@Column(name="correoUniversitario")
-	private String correoUniversitario;
+	@Column(name="nombre")
+	private String nombre;
 	
-	@Column(name="fechaEgreso")
-	private Integer fechaEgreso;//anioEgreso
-
-	@Column(name="genero")
-	private String genero;
+	@Column(name="descripcion")
+	private String descripcion;
 	
-	@Column(name="archivoCV")
-	private String archivoCV;
+	@Column(name="horario")
+	private String horario;
 	
-	@Column(name="rutaArchivoCV")
-	private String rutaArchivoCV;
+	@Column(name="salario")
+	private Integer salario;
 	
-	@Column(name="rutaImagen")
-	private String rutaImagen;
+	@Column(name="localidad")
+	private String localidad;
 	
-	@Column(name="estado")
-	private String estado;
+	@Column(name="modalidad")
+	private String modalidad;
 	
-	@Column(name="municipio")
-	private String municipio;
+	@Column(name="contradado")
+	private Integer contratado;
+	
+	@Column(name="postulado")
+	private Integer postulado;
 	
 	@Column(name="activo")
 	private Boolean activo;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name="fechaNacimiento")
-	private Date fechaNacimiento;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Column(name="fechaCreacion")
@@ -76,17 +73,17 @@ public class Aspirante implements Serializable {
 	private Date fechaModificacion;
 	
 	@ManyToOne
-	@JoinColumn(name="carreraId",nullable = false)
-	private Carrera carrera;
+	@JoinColumn(name="recluatadorId",nullable = false)
+	private Reclutador reclutador;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="usuarioId",nullable = false)
-	private Usuario usuario;
+	@ManyToMany(cascade= {CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinTable(
+		name= "vacante_aspirante",
+		joinColumns= @JoinColumn(name="vacanteId"),
+		inverseJoinColumns =@JoinColumn(name="aspiranteId")
+	)
+	private Set<Aspirante> listaAspirantes;
 	
 	
-	@ManyToMany(mappedBy="listaAspirantes")
-	private Set<Vacante> llistaVacantes;
-	
-	
-	
+
 }
