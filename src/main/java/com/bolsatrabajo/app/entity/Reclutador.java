@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -64,7 +65,7 @@ public class Reclutador implements Serializable{
 	@Column(name="fechaModificacion")
 	private Date fechaModificacion;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	@OneToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="usuarioId",nullable = false)
 	private Usuario usuario;
 

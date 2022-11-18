@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -58,11 +59,11 @@ public class Usuario implements Serializable  {
 	@JoinColumn(name="tipoUsuarioId",nullable = false)
 	private TipoUsuario tipoUsuario;
 	
-	@OneToMany(mappedBy="aspirante")
-	private Set<Aspirante> listaAspirantes;
+	@OneToOne(mappedBy="usuario")
+	private Aspirante aspirante;
 
-	@OneToMany(mappedBy="reclutador")
-	private Set<Reclutador> listaReclutadores;
+	@OneToOne(mappedBy="usuario")
+	private Reclutador reclutador;
 	
 	
 }
