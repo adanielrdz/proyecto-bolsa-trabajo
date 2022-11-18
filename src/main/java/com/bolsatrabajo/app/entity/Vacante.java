@@ -84,6 +84,14 @@ public class Vacante implements Serializable{
 	)
 	private Set<Aspirante> listaAspirantes;
 	
+	@ManyToMany(cascade= {CascadeType.PERSIST,CascadeType.MERGE})
+	@JoinTable(
+		name= "vacante_carrera",
+		joinColumns= @JoinColumn(name="vacanteId"),
+		inverseJoinColumns =@JoinColumn(name="carreraId")
+	)
+	private Set<Carrera> listaCarreras;
+	
 	
 
 }
