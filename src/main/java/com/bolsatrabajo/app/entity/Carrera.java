@@ -33,6 +33,6 @@ public class Carrera implements Serializable {
 	private String nombre;
 	
 	@ManyToMany(mappedBy="listaCarreras")
-	private Set<Vacante> llistaVacantes;
+	private Set<Vacante> listaVacantes;
 	
 }

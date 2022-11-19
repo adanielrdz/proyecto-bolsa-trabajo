@@ -86,7 +86,7 @@ public class Aspirante implements Serializable {
 	
 	
 	@ManyToMany(mappedBy="listaAspirantes")
-	private Set<Vacante> llistaVacantes;
+	private Set<Vacante> listaVacantes;
 	
 	
 	
