@@ -21,9 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
-@Getter
-@NoArgsConstructor
+
 @Entity
 @Table(name="usuario")
 public class Usuario implements Serializable  {
@@ -64,6 +62,87 @@ public class Usuario implements Serializable  {
 
 	@OneToOne(mappedBy="usuario")
 	private Reclutador reclutador;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
+	public Boolean getActivo() {
+		return activo;
+	}
+
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Date getFechaModificacion() {
+		return fechaModificacion;
+	}
+
+	public void setFechaModificacion(Date fechaModificacion) {
+		this.fechaModificacion = fechaModificacion;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	public Aspirante getAspirante() {
+		return aspirante;
+	}
+
+	public void setAspirante(Aspirante aspirante) {
+		this.aspirante = aspirante;
+	}
+
+	public Reclutador getReclutador() {
+		return reclutador;
+	}
+
+	public void setReclutador(Reclutador reclutador) {
+		this.reclutador = reclutador;
+	}
 	
 	
 }
+
